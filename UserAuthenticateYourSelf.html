@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Authentication YourSelf By User</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            funtion funValidate()
+            {
+                if(document.getElementById("tName").value=="" || document.getElementById("tPass").value=="")
+                {
+                    alert("Either userName or  Password is incoreect");
+                    return false;
+                    
+                }
+                else
+                {
+                    alert("Everithing is Ok");
+                    return true;
+                }
+                    
+            }
+        </script>
+    </head>
+    <body style="background-color: aquamarine">
+        <div>
+
+            <form action="TimerFix.jsp" method="POST" onsubmit="return funValidate();">
+           
+                <table border="3" style="margin-left: 350px; height: 150px; width: 250px; background-color: lightskyblue">
+                    <tr><th colspan="3" style="color: blueviolet">User Authentication</th></tr>
+                    <tr><td>Name:</td><td><input type="text" name="tName" id="tName"/></td></tr>
+                    <tr><td>Password:</td><td><input type="password" name="tPass" id="tPass"/></td></tr>
+                
+                    <tr><th><input type="submit" name="bsubmit" value="Validate"/></th>
+                    <th><input type="reset" name="breset" value="Clear"/></th>
+                    <th><input type="button" name="bclose" value="Close" onclick="window.close();"/></th>
+                    </tr>
+                
+            </table>
+                </form>
+                
+        </div>
+
+
+    </body>
+</html>

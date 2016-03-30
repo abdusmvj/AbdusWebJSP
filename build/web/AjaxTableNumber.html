@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function getXmlHttpRequestObject()
+            {
+                var request;
+                if(window.XMLHttpRequest)
+                    {  
+                         request=new XMLHttpRequest();
+                    }
+                else if(window.ActiveXObject)
+                    {  
+                        request=new ActiveXObject("Microsoft.XMLHTTP");  
+                    }  
+                
+            }   
+             var xmlhttp = new getXmlHttpRequestObject(); //xmlhttp holds the ajax object
+             
+           
+            function JspTable()
+            {
+                 if(xmlhttp)
+                {
+                    alert("hello call");
+                    var tvalue=document.getElementById("txtvalue").value;
+                    alert("got value" +tvalue);
+                    xmlhttp.open("POST",'http://localhost:8080/AbdusWebJSP/TableNoJSP.jsp',true);
+                    xmlhttp.onreadystatechange = handleServletPost;
+                    //xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                    xmlhttp.setRequestHeader("Accept","text/xml");
+                    xmlhttp.send("txtvalue="+tvalue.value);
+                }
+            }
+            
+             function handleServletPost()
+                    {
+                        if (xmlhttp.readyState ===4)
+                        {
+                            document.getElementById("tableNo").innerHTML=xmlhttp.responseText;
+                        }
+                    }
+        </script>
+    </head>
+    <body>
+        <h1>This is an example of ajax</h1>
+        <form>
+            <table>
+        
+                <tr><td>Enter value</td><td><input type="text" name="txtvalue"></td><td><input type="button" value="ShowTable" onClick="JspTable()"></td></tr>
+               
+        </table>
+             <span id="tableNo"></span>
+        </form>
+    </body>
+</html>

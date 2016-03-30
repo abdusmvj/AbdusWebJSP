@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function getXmlHttpRequestObject()
+            {
+                //var xmlHttp = false;
+                if (window.XMLHttpRequest)
+                {
+                    return new XMLHttpRequest(); //To support the browsers IE7+, Firefox, Chrome, Opera, Safari
+                }
+                else if(window.ActiveXObject)
+                {
+                    return new ActiveXObject("Microsoft.XMLHTTP"); // For the browsers IE6, IE5 (currntly not used this one )
+                }
+                else
+                {
+                    alert("Error due to old verion of browser upgrade your browser");
+                }
+            }
+            
+            
+            
+            var xmlhttp = new getXmlHttpRequestObject(); //xmlhttp holds the ajax object
+            function servletPost()
+            {
+                if(xmlhttp)
+                {
+                    var mename=document.getElementsByName("txtname");
+                    xmlhttp.open("POST",'http://localhost:8080/AbdusWebJSP/AjaxServletPost',true);
+                    xmlhttp.onreadystatechange = handleServletPost;
+                    //xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                    xmlhttp.setRequestHeader("Accept","text/xml");
+                    xmlhttp.send("hello txtname="+mename.value +"how are you?What Are you doing ?");
+                }
+            }
+                    
+                    function handleServletPost()
+                    {
+                        if (xmlhttp.readyState ===4)
+                        {
+                            if(xmlhttp.status ===200)
+                            {
+                                document.getElementById("message").innerHTML=xmlhttp.responseText;
+                            }
+                            else
+                            {
+                                alert("Ajax calling error");
+                            }
+                        }
+                    }
+                
+            
+        </script>
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <form>
+            <table>
+                <tr><td>Enter Name</td><td><input type="text" id="tbName" name="txtname"/></td></tr>
+                <tr><td><input type="button" value="Submit" onclick="servletPost()"/></td></tr>
+            </table>
+            <div id="message"></div>
+        </form>
+    </body>
+</html>

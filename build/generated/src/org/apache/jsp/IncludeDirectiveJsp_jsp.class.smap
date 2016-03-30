@@ -1,0 +1,18 @@
+SMAP
+IncludeDirectiveJsp_jsp.java
+JSP
+*S JSP
+*F
++ 0 IncludeDirectiveJsp.jsp
+IncludeDirectiveJsp.jsp
++ 1 includeToIncludeDirective.html
+includeToIncludeDirective.html
+*L
+5,11:57
+16,7:11
+22:68
+23,3:69,3
+26,3:78
+1#1,30:81
+28#0,5:110
+*E
